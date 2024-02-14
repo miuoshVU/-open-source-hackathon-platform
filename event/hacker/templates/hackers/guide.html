@@ -1,0 +1,249 @@
+{% extends 'hackers/base.html' %}
+
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+
+    <style>
+        body {
+          margin: 0;
+          font-family: "Lato", sans-serif;
+          color: #050505;
+          max-height: 100vh;
+          overflow-x: hidden;
+          background-attachment: fixed;
+          background-color: #eeebdd;
+          /* background-image:  radial-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.1)), url({% static 'christmas.png' %}); */
+        }
+
+        .body-wrapper{
+          display: flex;
+          margin: 30px 20px;
+          max-height: 100vh;
+          width: 100vw;
+          
+        }
+        
+        .sidebar {
+          margin-top: 40px;
+          padding: 0;
+          
+          border-radius: 10px !important;
+          
+          width: 200px;
+          font-size: larger;
+          text-align: left;
+          position: fixed;
+          height: 85.5vh;
+          background-color: #eeebdd;
+
+          
+        }
+        
+        .sidebar a {
+          display: block;
+          color: rgb(0, 0, 0);
+          font-weight: bolder;
+          font-size: 15px;
+          padding: 16px;
+          text-decoration: none;
+          margin-left: 0;
+          border-bottom: black;
+        }
+         
+        .sidebar a.active {
+          background-color: #aa0404;
+          color: white;
+
+        }
+        
+        .sidebar a:hover{
+          background-color: #6e6b6b;
+          border-radius: 10px !important;
+          color: white;
+        }
+        
+       .content {
+          margin-left: 240px;
+          padding: 15px ;
+          height: 100%;
+          background-color: #eeebdd;
+          width: 70%;
+          overflow-y: hidden;
+        }
+        .paragraph{
+            display: block;
+            margin-left: 200px;
+            padding: 20px ;
+            margin-top: 30px;
+            width: 90vw;
+            margin-bottom: 20px;
+            margin-right: 2rem;
+           
+            /* overflow-y: auto;  */
+
+
+        }
+        @media screen and (max-width: 800px) {
+          .sidebar {
+            display: flex; /* none */
+         
+            height: auto;
+            align-content: center;
+            background-color: #eeebdd;
+            margin-left: 0;
+            margin-top: 10px;
+            align-items: start;
+            border-width: 2px;
+            border-radius: 10px;
+            border-color: black;
+            width: 95%; /* Take full width on smaller screens */
+            align-items: center; /* Center items vertically */
+            
+          }
+
+          nav ul {
+  list-style-type: none; /* Remove list styling (dots) */
+  padding: 0;
+  margin: 0;
+}
+
+          .sidebar a {float: none; align-items: center;}
+          div.content {margin-left: 0; overflow-y: hidden; height: 87.5vh; margin-right: 20px;}
+          .body{
+            display: none;
+            margin-top: 10px;
+            overflow-y: hidden;
+
+          }
+          .paragraph{
+            margin-top: 80px !important;
+            margin-left: 0 !important;
+            margin-right: 0% !important;
+            height: 78vh !important;
+
+          }
+
+        }
+        
+        @media screen and (max-width: 400px) {
+
+          .sidebar{
+            display: flex;
+            background-color: #eeebdd;
+            align-items: left;
+            width: 100%;
+            margin-left: 0 !important;
+            
+          }
+          .sidebar a {
+            text-align: center;
+            float: none;  
+            font-size: 10px;
+            margin-left: 0px;
+            padding: 15px;
+            font-weight: bolder;
+            
+          }
+          .container {
+            margin: 0px;
+            height: 100vh;
+          }
+          .body{
+            display: flex;
+            margin: 0px;
+            overflow-y: hidden;
+            height: 100vh;
+          }
+          .content{
+            display: flex;
+            height: 15vh;
+            overflow-y: hidden;
+          }
+          .paragraph{
+            display: block;
+            margin-left: 0px;
+            height: 100vh;
+            font-size: 10px;
+            width: 90vw;
+            overflow-y: scroll;
+          }
+          .body-wrapper{
+            margin: 0px;
+            margin-top: 25px;
+            height: 100vh;
+          }
+        }
+
+    </style>
+
+</head>
+ 
+
+<body>
+
+  <div class="body-wrapper">
+
+    <div class="sidebar">
+      <a href="#projects">Projects</a>
+      <a href="#home">How to Submit?</a>
+      <a href="#news">Judging Criteria</a>
+      <a href="#contact">Containers</a>
+    </div>
+    
+    
+    <div class="paragraph">
+      <div id="projects">
+        <h3>Projects</h3>
+          <p>Participants are encouraged to delve into projects featuring open source licenses, where they can make impactful contributions such as bug fixes, the addition of new functionalities or features, and improvements to documentation. Whether you're passionate about refining code, enhancing user experiences, or ensuring comprehensive documentation, there's a project suited to your skills and interests. By actively engaging in these open-source initiatives, participants not only contribute to the advancement of technology but also gain valuable experience in collaborative software development.</p>
+      </div>
+        <div id="home">
+            <h3>How to Submit?</h3>
+            <br>
+            <h4>1. Verification</h4>
+            <p>Before submitting your application for a prize, it's imperative to complete our two-step verification process. Upon registration, a verification link will be sent to your email for confirmation. Without successfully verifying your email and phone number, you won't be able to submit your application. If you mistakenly entered the wrong email, you'll need to recreate your account using the correct and legitimate email address. Ensuring accurate information during this process is crucial for a smooth application submission and account creation experience.</p>
+            <h4>2. User Details</h4>
+            <p>When submitting your application, it is crucial to ensure that the personal information you provide is accurate and up-to-date. Accurate details contribute to a smooth and reliable application process, enabling us to process your submission efficiently. Please double-check and verify all provided information to avoid any discrepancies or delays. Your commitment to providing accurate personal information is essential for a successful application experience.</p>
+            <h4>3. Project and Work URL </h4>
+            <p>As part of your application, we kindly request you to share the <b>Project URL</b>: this is the main page of the project you are contributing to. (not the URL to your work). </P> 
+              <p> We also ask for your <b>Contribution URL</b>, which can be any repository link or URL showcasing the work you have undertaken. This may include links to specific Git commits, merge requests, or documentation contributions that highlight your active involvement and contributions to the project. Providing these direct links will allow us to delve into the details of your work, understand the specific enhancements or problem-solving steps taken, and gain a more granular perspective on your contributions.</p>
+            <h4>4. Describing Impact</h4>
+            <p>In addressing the question regarding the anticipated impact of your work on others, please provide a detailed explanation of how you foresee your contributions influencing the works and lives of those who will benefit from them. Consider aspects such as improved efficiency, enhanced user experiences, and any potential positive effects on the broader community. Discuss the expected outcomes of your efforts, emphasizing the significance and value they bring to the project and its stakeholders.</p>
+            <p> Specifically, please include:<ul>
+                <li><p>
+                    the estimated number of people that will be impacted</p>
+              <li><p> how their lives will change</p>
+            </ul>     </p>
+                <p>Ensure your response remains within the specified word limit of 1000 words.</p>
+            <h4>5. Optional Fields</h4>
+            <p>If there's anything more you'd like to share (up to 1000 words), feel free to use this space to provide additional insights, experiences, or achievements that enhance your application. Outline your areas of expertise, showcasing skills that make you a valuable contributor, and specify your areas of interest within the hackathon context. If you're participating as a team, please provide who is on your team name. Share the link to your GitHub or GitLab profile, offering organizers a glimpse into your past contributions. Additionally, let us know how you heard about this hackathon, helping organizers understand the reach and effectiveness of their promotional efforts.</p>
+          </div>
+        
+          <div id="news">
+            <h3>Judging Criteria</h3>
+            <br>
+            <p>In evaluating project submissions, a primary focus will be placed on assessing the potential impact of each contribution. The judging criteria will consider not only the scale of the impact but also the underlying reasons why the project is deemed impactful. Participants are encouraged to showcase how their work addresses real-world challenges, enhances user experiences, or brings innovation to the forefront of open-source software.</p>
+            <h4>Key Considerations:</h4>
+            <h5>Addressing Real-World Challenges:</h5>
+            <p>Projects that effectively identify and address tangible real-world challenges will receive high consideration. Clearly articulate the problem being solved and the potential positive outcomes.</p>
+            <h5>Scalability and Reach:</h5>
+            <p>Consideration will be given to projects that exhibit scalability and the potential for widespread adoption. Projects with the ability to scale and reach a larger audience will be recognized for their lasting impact.</p>
+            <h5>Why impact matters?</h5>
+            <p>Emphasizing impact is crucial as it reflects the meaningful change and value a project brings to users, communities, or the software ecosystem as a whole. By showcasing how a project positively affects its intended audience and beyond, participants not only demonstrate technical proficiency but also underscore the societal relevance of their contributions.</p>
+          </div>
+
+          <div id="contact">
+            <h3>Containers</h3>
+              <p>We are working on providing you development containers to work on, they will be available shortly.</p>
+          </div>
+        
+        </div>
+
+  </div>
+    
+    </body>
+
+{% endblock %}

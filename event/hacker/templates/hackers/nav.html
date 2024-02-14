@@ -1,0 +1,107 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/landing_css/style.css' %}" />
+
+<link rel="stylesheet" href="{% static 'css/landing_css/divider.css' %}" />
+
+<link rel="stylesheet" href="{% static 'css/template/bootstrap.min.css' %}" />
+<style>
+  ul li a {
+    color: white !important;
+  }
+
+  ul li:hover {
+    background-color: rgba(46, 46, 46, 0.2) !important;
+    color: #000 !important;
+  }
+
+  .nav-col {
+    background-color: #000;
+  }
+
+  .dropdown-menu:hover {
+    background-color: #608f7a !important;
+  }
+
+  .dropdown-item:hover {
+    background-color: transparent !important;
+  }
+
+  li.dropdown-item:hover,
+  a.dropdown-item:hover {
+    color: black;
+    text-decoration: underline;
+    font-weight: bolder;
+  }
+
+  .btn:hover {
+    color: #00873e !important;
+  }
+</style>
+
+<nav
+  class="navbar navbar-expand-md text-dark fixed-top navColor px-3 py-0 navbar-dark nav-col"
+>
+  <button
+    class="navbar-toggler navbar-dark cmr-20 mobile-menu-icon"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto mt-lg-0">
+      <li class="nav-item py-2">
+        <a
+          class="nav-link fs-6 hover-underline-animation px-0"
+          href="{% url 'landing' %}"
+          >Landing</a
+        >
+      </li>
+      <li class="nav-item py-2">
+        <a
+          class="nav-link fs-6 hover-underline-animation px-0"
+          href="{% url 'hacker-dash' %}"
+          >Dashboard</a
+        >
+      </li>
+      <li class="nav-item py-2">
+        <a
+          class="nav-link fs-6 hover-underline-animation px-0"
+          href="{% url 'profile' request.user.id%}"
+          >Submit Application</a
+        >
+      </li>
+      <li class="nav-item py-2">
+        <a
+          class="nav-link fs-6 hover-underline-animation px-0"
+          href="{% url 'guide' %}"
+          >Guide</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="nav-item dropdown">
+    <a
+      class="nav-link dropdown-toggle fs-6"
+      href="#"
+      id="navbarDropdownMenuLink"
+      role="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+      style="color: white"
+    >
+      <span class="text-right"
+        >Hello, {{request.user.first_name}} {{request.user.last_name}}</span
+      >
+    </a>
+    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+      <li>
+        <a class="dropdown-item text-white" href="{% url 'logout' %}">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

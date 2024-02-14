@@ -1,0 +1,98 @@
+.form-contact-link {
+    color: rgb(249, 249, 249);
+}
+.icon-color {
+    color: #00873E
+}
+.btn-submit {
+    width: 70%;
+    background-color: rgba(129, 0, 0 ,1);
+    color: white;
+    border-radius: 8px;
+    border-width: 0;
+}
+.hr-s {
+    color: black;
+    width: 100%;
+}
+.btn-small {
+    background-color: rgba(129, 0, 0 ,1);
+    color: white;
+}
+.reset {
+    font-size: small;
+}
+.w-control {
+    max-width: 90%;
+    display: flex;
+}
+.bg-cream {
+    background-color: #EEEBDD;
+}
+
+@media (min-width: 999px) and (max-width: 3000px) {
+    .w-control {
+        max-width: 60%;
+        display: flex;
+    }
+}
+
+@media (min-width: 760px) and (max-width: 999px) {
+    .w-control {
+        max-width: 80%;
+        display: flex;
+    }
+}
+
+@media (min-width: 530px) and (max-width: 759px) {
+    .w-control {
+        max-width: 85%;
+        display: block;
+    }
+}
+
+
+@media (min-width: 359px) and (max-width: 376px) {
+    .w-control {
+        max-width: 85%;
+        display: block;
+    }
+}
+
+@media (max-width: 290px) {
+    .w-control {
+        max-width: 100%;
+        display: block;
+    }
+}
+
+.btn:hover {
+    color: #00873E !important;
+    filter: brightness(140%);
+}
+
+.tooltip-col {
+    color: #001e57;
+}
+
+.form-contact-link:hover {
+    opacity: 0.7;
+}
+
+.color-bg {
+    background-color: #eeebddb4;
+}
+
+.round {
+    border-radius: 20px;
+    border-width: 0px;
+}
+
+.btn:active {
+    transform: scale(1.03);
+    transition: all 0.1s ease-out;
+}
+
+.message-align {
+    margin-top: 4rem !important;
+}

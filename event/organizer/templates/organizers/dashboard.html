@@ -1,0 +1,57 @@
+{% extends 'organizers/base.html' %}
+{% load organizer_tags %}
+{% block content %}
+    <style>
+        .card:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+    <div class="row mt-5 text-center justify-content-center g-3">
+    {% if head_org %}
+        <div class="container w-75 mt-3">
+            <a href="{% url 'export-hackers' %}" class='btn btn-secondary'>Export Hackers</a>
+            <a href="{% url 'export-checkedin-hackers' %}" class='btn btn-secondary'>Export Checked in Hackers</a>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="card p-5 h-100" style="box-shadow: 0 4px 8px 0 rgba(0,0,0, 0.2), 0 6px 20px 0 rgba(0,0,0,.19);">
+                <a href="{% url 'all-organizers' %}" class="text-decoration-none text-black">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Organizers</h5>
+                    <p class="card-text">See other planning committee members</p>
+                </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="card p-5 h-100" style="box-shadow: 0 4px 8px 0 rgba(0,0,0, 0.2), 0 6px 20px 0 rgba(0,0,0,.19);">
+                <a href="admin" class="text-decoration-none text-black">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Django Admin Panel</h5>
+                    <p class="card-text">Access Django's Admin dashboard for awesome power</p>
+                </div>
+            </div>
+            </a>
+        </div>
+        
+    {% endif %}
+    </div>
+    
+    <div class="row mt-5 mb-5 text-center justify-content-center g-3">
+        {% for permission in permissions %}
+        <div class="col-lg-6 col-md-12 ">
+            <a href="{% url permission.0 %}" class="text-decoration-none text-black">
+                <div class="card p-5" style="box-shadow: 0 4px 8px 0 rgba(0,0,0, 0.2), 0 6px 20px 0 rgba(0,0,0,.19);">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{permission.1}}</h5>
+                        <p class="card-text">{{mapping|get_description:permission.0}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+
+{% endblock %}

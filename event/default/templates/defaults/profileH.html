@@ -1,0 +1,443 @@
+{% extends 'hackers/base.html' %}
+{% load static %}
+{% block content %}
+{% block head %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+	integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+	integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+	crossorigin="anonymous"></script>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/61b96161ad.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'css/form_css/form.css' %}">
+<script src="{% static 'js/submit/submit.js' %}" defer></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<title> Christmas Challenge Apply for a Prize </title>
+<style>
+	.card {
+		width: 90% !important;
+	}
+
+	@media (min-width:768px) {
+		.col-md-3 {
+			flex: 0 0 auto;
+			width: 100%;
+		}
+	}
+
+	.btn:hover {
+		border-color: #000;
+	}
+</style>
+{% endblock head %}
+
+<body
+	style="background-image:  radial-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.1)), url({% static 'christmas.png' %});">
+	<div class="row m-1 message-align">
+		<div class="col-12 m-1">
+			{% for message in messages %}
+			<div class="alert {{ message.tags }} alert-dismissible col-md-3 col-lg-12 d-flex justify-content-center"
+				role="alert">
+				{{message}}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="d-flex justify-content-center align-items-center">
+		<div id="page" class="card round color-bg h-100 mb-5">
+			<div class="m-3 p-4 rounded-3 bg-cream text-white"
+				style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+				<div class="card-body">
+					<div class="container py-3 bg-cream">
+						{% block form %}
+						<div class="container">
+							<div class="row">
+								<form id="myForm" style="height: 85%" method="POST" enctype="multipart/form-data">
+									{% csrf_token %}
+									<div class="form-whole">
+										<!-- 1 : Personal information -->
+										<div class="form-page">
+											<div class="row mb-4">
+												<div class="col-12 text-center g-5">
+
+													<h3 class="text-dark">Prize Application (1/3): Personal Information
+													</h3>
+												</div>
+											</div>
+											<div class="card-body">
+												<p class="card-text text-dark font-step3">
+
+													Sharing your open-source code impact
+													is an
+													incredible way to demonstrate your contributions to the global
+													community. <br>Your code isn't just about lines
+													and algorithms—it's about the positive influence it has on the
+													world.<br>
+													Showcase the project you've worked on, explain the impact of your
+													contributions, and highlight how your
+													code has empowered others. </p>
+											</div>
+											<div class="row g-3">
+												<div class="col-md-6 col-sm-12">
+													<div class="form-floating">
+														{{user_change_form.first_name}}
+														<label class="text-muted" for="id_first_name"> <span
+																class="fw-normal text-dark">First
+																Name</span> <span class="text-danger text-bold">*</span>
+														</label>
+													</div>
+												</div>
+												<div class="col-md-6 col-sm-12">
+													<div class="form-floating">
+														{{user_change_form.last_name}}
+														<label class="text-muted" for="id_last_name"><span
+																class="fw-normal text-dark">Last Name</span>
+															<span class="text-danger text-bold">*</span></label>
+													</div>
+												</div>
+											</div>
+											<div class="row mt-1 g-3">
+												<div class="col text-center">
+													<label class="text-danger d-none" id="email_error_label">This Email
+														is
+														Already Registered</label>
+													<div class="form-floating">
+														{{user_change_form.email}}
+														<label class="text-muted" for="id_email"><span
+																class="fw-normal text-dark">Email address (already
+																verified)</span>
+															<span class="text-danger text-bold">*</span></label>
+													</div>
+												</div>
+											</div>
+											<div class="row mt-3">
+												<div class="col text-center">
+													<div class="form-floating">
+														{{user_change_form.phone}}
+														<label class="text-muted" for="id_phone"> <span
+																class="fw-normal text-dark">Mobile Phone Number (already
+																verified)</span>
+															<span class="text-danger text-bold">*</span> </label>
+													</div>
+												</div>
+											</div>
+											<div class="row g-3 mt-2">
+												<div class="col-md-6 col-sm-12">
+													<div class="form-floating">
+														{{user_change_form.city}}
+														<label class="text-muted" for="id_first_name"> <span
+																class="fw-normal text-dark">
+																City (where you live)</span> <span
+																class="text-danger text-bold">*</span>
+														</label>
+													</div>
+												</div>
+												<div class="col-md-6 col-sm-12">
+													<div class="form-floating">
+														{{user_change_form.country}}
+														<label class="text-muted" for="id_last_name"><span
+																class="fw-normal text-dark">Nationality</span>
+															<span class="text-danger text-bold">*</span></label>
+													</div>
+												</div>
+											</div>
+											<div class="row mt-3">
+												<div class="col text-end">
+													<button class="btn btn-small" type="button" data-next-button>Next <i
+															class="fa-solid fa-chevron-right"></i></button>
+												</div>
+											</div>
+										</div>
+										<!-- 2 : Challenge Questions -->
+										<div class="form-page d-none w-100">
+											<div class="row">
+												<div class="col-12 text-center text-dark">
+													<h3 class="text-dark">Prize Application (2/3): Your Work</h3>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between align-items-center mt-3">
+												<a data-toggle="tooltip"
+													title="Please provide the URL to the project you contributes. This is not the link to your work."><i
+														class="fa-solid fa-circle-info fa-xl tooltip-col"></i>
+												</a>
+												<div class="row w-100 ps-2">
+													<div class="col text-center">
+														<div class="form-floating">
+															{{user_change_form.project_url}}
+															<label class="text-muted" for="id_phone"> <span
+																	class="fw-normal text-dark">Link/URL to Project (not
+																	to your work)</span>
+																<span class="text-danger text-bold">*</span> </label>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between align-items-center mt-3">
+												<a data-toggle="tooltip"
+													title="Provide a link to, or describe the issue/enhancement/challenge/problem that is being addressed. (max 1500 words)"><i
+														class="fa-solid fa-circle-info fa-xl tooltip-col"></i>
+												</a>
+												<div class="row w-100 ps-2">
+													<div class="col text-center">
+														<div class="form-floating">
+															{{user_change_form.issue_desc}}
+															<label class="text-muted" for="id_phone"> <span
+																	class="fw-normal text-dark">Which
+																	issue/enhancement/bug did you work on?</span>
+																<span class="text-danger text-bold">*</span> </label>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between align-items-center mt-3">
+												<a data-toggle="tooltip"
+													title="Tell us about your work and the contribution you made. (E.g.: what you have done to enhance or solve the issue/challenge/problem) (max 1500 words)"><i
+														class="fa-solid fa-circle-info fa-xl tooltip-col"></i>
+												</a>
+												<div class="row w-100 ps-2">
+													<div class="col text-center">
+														<div class="form-floating">
+															{{user_change_form.project_info}}
+															<label class="text-muted" for="id_phone"> <span
+																	class="fw-normal text-dark">Details about your
+																	contribution
+																</span>
+																<span class="text-danger text-bold">*</span> </label>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between align-items-center mt-3">
+												<a data-toggle="tooltip"
+													title="How do you think the your work will effect others? Please explain what you anticipate as the impact of your work on the works and lives of others that will benefit from it. (max 1000 words)"><i
+														class="fa-solid fa-circle-info fa-xl tooltip-col"></i>
+												</a>
+												<div class="row w-100 ps-2">
+													<div class="col text-center">
+														<div class="form-floating">
+															{{user_change_form.project_impact}}
+															<label class="text-muted" for="id_phone"> <span
+																	class="fw-normal text-dark">Potential Impact of Your
+																	Work</span>
+																<span class="text-danger text-bold">*</span> </label>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between align-items-center mt-3">
+												<a data-toggle="tooltip"
+													title="Please provide the URL to your work. (E.g.: Link to a patch file or git commit in a public repository)"><i
+														class="fa-solid fa-circle-info fa-xl tooltip-col"></i>
+												</a>
+												<div class="row w-100 ps-2">
+													<div class="col text-center">
+														<div class="form-floating">
+															{{user_change_form.contribution_url}}
+															<label class="text-muted" for="id_phone"> <span
+																	class="fw-normal text-dark">Link to your
+																	Contribution (URL)</span>
+																<span class="text-danger text-bold">*</span> </label>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row mt-3">
+												<div class="col text-start">
+													<button id="prev" class="btn btn-small" type="button"
+														data-previous-button><i class="fa-solid fa-chevron-left"></i>
+														Prev</button>
+												</div>
+												<div class="col text-end">
+													<button class="btn btn-small " type="button" data-next-button>Next
+														<i class="fa-solid fa-chevron-right"></i></button>
+												</div>
+											</div>
+										</div>
+										<!-- 3 : Additional Information -->
+										<div class="form-page d-none w-100">
+											<div class="row">
+												<div class="col-12 text-center text-dark">
+													<h3 class="text-dark">Prize Application (3/3): Optional Information
+													</h3>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between align-items-center mt-3">
+												<a data-toggle="tooltip"
+													title="Is there anything else you would like to share? (max 1000 words)"><i
+														class="fa-solid fa-circle-info fa-xl tooltip-col"></i>
+												</a>
+												<div class="row w-100 ps-2">
+													<div class="col text-center">
+														<div class="form-floating">
+															{{user_change_form.feedback}}
+															<label class="text-muted" for="id_phone"> <span
+																	class="fw-normal text-dark">Any feedback about the
+																	hackathon? </span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between align-items-center mt-3">
+												<a data-toggle="tooltip" title="What are your areas of expertise?"><i
+														class="fa-solid fa-circle-info fa-xl tooltip-col"></i>
+												</a>
+												<div class="row w-100 ps-2">
+													<div class="col text-center">
+														<div class="form-floating">
+															{{user_change_form.expertise}}
+															<label class="text-muted" for="id_phone"> <span
+																	class="fw-normal text-dark">What areas do you have
+																	expertise in?</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between align-items-center mt-3">
+												<a data-toggle="tooltip" title="What are your areas of interest?"><i
+														class="fa-solid fa-circle-info fa-xl tooltip-col"></i>
+												</a>
+												<div class="row w-100 ps-2">
+													<div class="col text-center">
+														<div class="form-floating">
+															{{user_change_form.interest}}
+															<label class="text-muted" for="id_phone"> <span
+																	class="fw-normal text-dark">What areas/topics are
+																	you interesed in?</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between align-items-center mt-3">
+												<a data-toggle="tooltip"
+													title="If participating as a team, what is the name of your team?"><i
+														class="fa-solid fa-circle-info fa-xl tooltip-col"></i>
+												</a>
+												<div class="row w-100 ps-2">
+													<div class="col text-center">
+														<div class="form-floating">
+															{{user_change_form.team}}
+															<label class="text-muted" for="id_phone"> <span
+																	class="fw-normal text-dark">Are you part of a team?
+																	Who?</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between align-items-center mt-3">
+												<a data-toggle="tooltip"
+													title="What is the link to your github/gitlab profile?"><i
+														class="fa-solid fa-circle-info fa-xl tooltip-col"></i>
+												</a>
+												<div class="row w-100 ps-2">
+													<div class="col text-center">
+														<div class="form-floating">
+															{{user_change_form.profile_url}}
+															<label class="text-muted" for="id_phone"> <span
+																	class="fw-normal text-dark">Link to your profile
+																	(eg: linkedin, github URL)</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="d-flex justify-content-between align-items-center mt-3">
+												<a data-toggle="tooltip"
+													title="How did you hear about this hackathon?"><i
+														class="fa-solid fa-circle-info fa-xl tooltip-col"></i>
+												</a>
+												<div class="row w-100 ps-2">
+													<div class="col text-center">
+														<div class="form-floating">
+															{{user_change_form.hackathon}}
+															<label class="text-muted" for="id_phone"> <span
+																	class="fw-normal text-dark">Where did you hear about
+																	this hackathon?</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row mt-3">
+												<div class="col text-start">
+													<button id="prev" class="btn btn-small" type="button"
+														data-previous-button><i class="fa-solid fa-chevron-left"></i>
+														Prev</button>
+												</div>
+												<div class="col text-end">
+													{% if not user.is_email_verified or not user.is_phone_verified %}
+													<input type="submit" class="btn btn-small border-danger text-dark"
+														id="submissionButton" value="Submit" data-toggle="modal"
+														data-target="#submitModal" disabled>
+													{% else %}
+													<input type="submit" class="btn btn-small" id="submissionButton"
+														value="Submit" data-toggle="modal" data-target="#submitModal">
+													{% endif %}
+												</div>
+											</div>
+										</div>
+										<div class="row d-none" id="error-reminder-container">
+											<div class="col text-center">
+												<p class="text-danger ">Please Make Sure All * Fields Are Filled In</p>
+											</div>
+										</div>
+									</div>
+								</form>
+								<br>
+								<p class="text-dark">If you are experiencing any difficulties while submitting your
+									application,
+									please contact us on <A HREF="https://discord.gg/rbWtyWt3cP">discord</A> or via
+									e-mail at
+									<a class="form-contact-link text-dark"
+										href="mailto:challenge@parkyeri.com">challenge@parkyeri.com</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="width-control" class="mt-5 container justify-content-center align-items-center w-control"
+					style="height: 100%; width:fit-content;">
+				</div>
+			</div>
+		</div>
+</body>
+<script>
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip({ placement: 'right' })
+	})
+</script>
+<script>
+	var countryCode = '{{ country_code }} ';
+	var phoneInput = $('#id_phone');
+
+	$(document).ready(function () {
+
+		var textarea = $('textarea');
+		textarea.css('height', '8rem');
+
+		$('textarea').on('input', function () {
+			if ($(this).val().trim() === '') {
+				$(this).css('height', '8rem');
+			}
+			if ($(this).css('height') < $(this)[0].scrollHeight + 'px') {
+				autoResize($(this));
+			}
+		});
+
+		function autoResize(textarea) {
+			textarea.css('height', textarea[0].scrollHeight + 'px');
+		}
+
+		if (!phoneInput.val().includes("+")) {
+			phoneInput.val('+' + countryCode + phoneInput.val());
+		}
+
+	});
+</script>
+{% endblock form %}
+{% endblock %}

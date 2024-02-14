@@ -1,0 +1,127 @@
+{% extends 'defaults/form_base.html' %} {% load static %} {% block form %}
+<script
+  src="https://kit.fontawesome.com/2b86215731.js"
+  crossorigin="anonymous"
+></script>
+<style>
+  .password-icon {
+    float: right;
+    margin-left: -28px;
+    position: relative;
+    z-index: 2;
+    color: #212529;
+  }
+
+  .fa-sharp:hover {
+    filter: brightness(300%);
+  }
+
+  .btn:hover,
+  .fa-arrow-left-long:hover {
+    color: #00873e !important;
+    filter: brightness(140%);
+  }
+
+  .text-muted:hover {
+    opacity: 0.7;
+  }
+
+  .img-effect:active,
+  .btn:active {
+    transform: scale(1.03);
+    transition: all 0.1s ease-out;
+  }
+</style>
+<title>Christmas Challenge Login</title>
+<h2 class="text-center pb-4 text-dark">
+  <a href="{% url 'landing' %}"
+    ><i class="fa fa-arrow-left-long icon-color img-effect"></i
+  ></a>
+  Log In
+</h2>
+
+<form class="" method="POST" action="">
+  {% csrf_token %}
+  <div class="form-row m-2 mb-2">
+    <div class="form-group col-12">
+      <input
+        type="text"
+        class="form-control bg-cream"
+        name="email"
+        placeholder="Email"
+      />
+    </div>
+  </div>
+  <div class="form-row m-2">
+    <div class="form-group col-12 d-flex align-items-center">
+      <input
+        type="password"
+        name="password"
+        class="form-control bg-cream"
+        id="exampleInputPassword"
+        placeholder="Password"
+      />
+      <span id="show-pass" class="password-icon"
+        ><i class="fa-sharp fa-regular fa-eye-slash"></i
+      ></span>
+    </div>
+  </div>
+  <div class="row m-1 justify-content-center">
+    <div class="col-12 m-1">
+      {% for message in messages %}
+      <div
+        class="alert alert-danger alert-dismissible col-md-3 col-lg-12"
+        role="alert"
+      >
+        {{message}}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="form-row text-center">
+    <div class="form-group col-12">
+      <button class="btn-submit btn" type="submit">Sign In</button>
+    </div>
+  </div>
+</form>
+<div class="form-row text-center">
+  <div class="col-auto">
+    <a class="text-center reset text-muted" href="{% url 'reset_password' %}"
+      >Forgot Password?</a
+    >
+  </div>
+</div>
+<hr class="hr-s" />
+<div class="row text-center mt-2">
+  <div class="form-group col-12">
+    <a class="btn-submit btn" href="{% url 'registration' %}">Sign Up</a>
+  </div>
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"
+></script>
+<script>
+  const passwordField = document.getElementById("exampleInputPassword");
+  const togglePassword = document.getElementById("show-pass");
+
+  togglePassword.addEventListener("click", function () {
+    if (passwordField.value !== "") {
+      if (passwordField.type == "text") {
+        passwordField.type = "password";
+        togglePassword.innerHTML = `<i class="fa-sharp fa-regular fa-eye-slash"></i>`;
+      } else if (passwordField.type == "password") {
+        passwordField.type = "text";
+        togglePassword.innerHTML = `<i class="fa-sharp fa-regular fa-eye"></i>`;
+      }
+    }
+  });
+</script>
+{% endblock form %}

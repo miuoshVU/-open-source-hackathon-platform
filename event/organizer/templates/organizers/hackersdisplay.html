@@ -1,0 +1,171 @@
+{% extends 'organizers/base.html' %}
+{% block content %}
+
+<style>
+    .fs-8 {
+        font-size: .95em;
+    }
+
+    .table {
+        table-layout: fixed;
+        overflow-x: auto;
+        display: block;
+    }
+
+    th,
+    td {
+        white-space: nowrap;
+    }
+
+    .list:hover {
+        background-color: #e0e0e0;
+    }
+
+    .table-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .fa-file-pdf-o {
+        color: rgb(222, 19, 19);
+    }
+    .fa-file-pdf-o:hover {
+        color: rgb(131, 0, 0);
+    }
+    i:hover {
+        color: #cccccc;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<br>
+<div class="container w-100">
+    <div class="row justify-content-between align-items-center" style="margin-top: 5px; ">
+        <div class="col-4 ms-2">
+            <h3>All Hackers</h3>
+        </div>
+        <div class="col-5 pe-0 d-flex justify-content-end">
+            <form class="row d-flex justify-content-between" action="{% url 'display-hackers' %}" method="GET">
+                <div class="col p-0">
+                    <input id="user-input" name="q" class="form-control" type="text" placeholder="Search"
+                        aria-label="Search">
+                </div>
+                <div class="col p-0 d-flex justify-content-center">
+                    <a class="btn btn-outline-warning" href="{% url 'display-hackers' %}">Reset Search</a>
+                </div>
+                <div class="col p-0">
+                    <a href="{% url 'export-hackers' %}" class='btn btn-secondary'>Export Hackers</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container mt-1">
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="checked-in" role="tabpanel" aria-labelledby="checked-in-tab">
+            <table class="table fs-8">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone number</th>
+                        <th scope="col">Location <i id="location_sort" class="fa fa-sort me-2" aria-hidden="true"></i>
+                        </th>
+                        <th scope="col">Data Joined (GMT+0) <i id="joined_sort" class="fa fa-sort me-2"
+                                aria-hidden="true"></i> </th>
+                        <th scope="col">Last Logged (GMT+0) <i id="last_sort" class="fa fa-sort me-2"
+                                aria-hidden="true"></i> </th>
+                        <th scope="col">Came From</th>
+                        <th scope="col">Email verified <i id="email_sort" class="fa fa-sort me-2"
+                                aria-hidden="true"></i> </th>
+                        <th scope="col">Phone verified <i id="phone_sort" class="fa fa-sort me-2"
+                                aria-hidden="true"></i> </th>
+                        <th scope="col">Joined Discord <i id="dsc_sort" class="fa fa-sort me-2" aria-hidden="true"></i>
+                        </th>
+                        <th scope="col">Submitted <i id="submitted_sort" class="fa fa-sort me-2" aria-hidden="true"></i>
+                        </th>
+                        <th scope="col">Form</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for h in checked_in_hackers %}
+                    <tr class="list">
+                        <td>{{h.user.first_name}} {{h.user.last_name}}</td>
+                        <td>{{h.user.email}}</td>
+                        <td>{{h.user.country_code}} {{h.user.phone}}</td>
+                        {% if h.user.country != '' %}
+                        <td>{{h.user.country}}, {{h.user.city}}</td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}
+                        <td>{{h.user.date_joined}}</td>
+                        <td>{{h.user.last_login}}</td>
+                        <td>{{h.user.source}}</td>
+                        <td>{{h.user.is_email_verified}}</td>
+                        <td>{{h.user.is_phone_verified}}</td>
+                        <td>{{h.user.joined_discord}}</td>
+                        <td>{{h.user.is_submitted}}</td>
+                        {% if h.user.is_submitted is True %}
+                        <td><a href="{% url 'generate_pdf' h.user.id %}" target="_blank">
+                                <i class="fa fa-file-pdf-o"></i></a></td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<hr>
+{% endblock %}
+
+{% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var sortOrder = {
+            'phone': 1,
+            'location': 1,
+            'joined': 1,
+            'last': 1,
+            'email': 1,
+            'dsc': 1,
+            'submitted': 1
+        };
+
+        $('#phone_sort, #location_sort, #joined_sort, #last_sort, #email_sort, #dsc_sort, #submitted_sort').click(function () {
+            var columnId = $(this).attr('id').split('_')[0];
+
+            var table = $('.table');
+            var rows = table.find('tbody > .list').get();
+
+            rows.sort(function (rowA, rowB) {
+                var valueA = $(rowA).find('td:nth-child(' + (getColumnIndex(columnId) + 1) + ')').text().toLowerCase();
+                var valueB = $(rowB).find('td:nth-child(' + (getColumnIndex(columnId) + 1) + ')').text().toLowerCase();
+
+                if (valueA < valueB) return -sortOrder[columnId];
+                if (valueA > valueB) return sortOrder[columnId];
+                return 0;
+            });
+
+            $.each(rows, function (index, row) {
+                table.children('tbody').append(row);
+            });
+
+            sortOrder[columnId] = -sortOrder[columnId];
+        });
+
+        function getColumnIndex(columnId) {
+            var headers = $('.table thead th');
+            for (var i = 0; i < headers.length; i++) {
+                if ($(headers[i]).find('i').attr('id') === columnId + '_sort') {
+                    return i;
+                }
+            }
+            return -1;
+        }
+    });
+</script
+{% endblock script %}

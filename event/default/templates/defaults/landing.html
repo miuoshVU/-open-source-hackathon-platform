@@ -1,0 +1,863 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Christmas Challenge">
+  <meta name="keywords" content="hackathon, Christmas Challenge, open source">
+  <meta name="author" content="challenge@parkyeri.com">
+  <meta name="description" content="Christmas Challenge">
+  <meta name="keywords" content="hackathon, Christmas Challenge, open source">
+  <meta name="author" content="challenge@parkyeri.com">
+
+  <title> Christmas Challenge </title>
+  <link rel="stylesheet" href="{% static 'plugins/plugins/bootstrap/css/bootstrap.css' %}">
+  <script src="https://kit.fontawesome.com/61b96161ad.js" crossorigin="anonymous"></script>
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="{% static 'css/landing_css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/template/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/template/bootstrap-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'css/template/templatemo-topic-listing.css' %}">
+  <link rel="stylesheet" href="{% static 'css/template/section2.css' %}">
+  <link rel="stylesheet" href="{% static 'css/landing_css/countdown.css' %}">
+  <link rel="stylesheet" href="{% static 'css/landing_css/divider.css' %}">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
+  <style>
+    @media (max-width: 1399.98px) {
+      .first-card h5 {
+        display: none !important;
+      }
+
+      .d-flex span:first-child {
+        display: block !important;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .first-card h5 {
+        display: block !important;
+        font-size: large;
+      }
+
+      .d-flex span:first-child {
+        display: none !important;
+      }
+
+      .d-flex span.h6 {
+        display: block !important;
+      }
+
+      .card {
+        height: 300px !important;
+      }
+
+      .card-deck {
+        min-height: 165vh !important
+      }
+
+    }
+
+    @media (max-width: 575.98px) {
+      .card {
+        height: 500px !important;
+      }
+
+      .card-deck {
+        min-height: 160vh !important
+      }
+    }
+
+    .rounded-text {
+      border: 3px solid var(--bs-highlight-bg);
+      padding: 8px;
+    }
+
+    .border-bt {
+      border-top: 3px solid var(--bs-highlight-bg);
+      border-bottom: 3px solid var(--bs-highlight-bg);
+      padding: 8px;
+    }
+
+    .body {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .discord {
+      border: 2px solid #fff;
+      background-color: #5662f6;
+    }
+
+    .discord:hover {
+      color: #fff !important;
+      background-color: #5662f6;
+    }
+
+    .discord:active {
+      color: #fff !important;
+      background-color: #5662f6 !important;
+    }
+
+    .discord1 {
+      background-color: #5662f6;
+    }
+
+    .discord1:hover {
+      border-color: #fff;
+      color: #fff !important;
+      background-color: #5662f6;
+    }
+
+    .discord1:active {
+      color: #fff !important;
+      background-color: #5662f6 !important;
+    }
+
+    .body .d-flex .shadow {
+      height: 400px;
+    }
+
+    @media (max-width: 575.98px) {
+      .body .d-flex .shadow {
+        height: 500px !important;
+      }
+
+      .img-dsc {
+        height: 10% !important;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .body .d-flex .shadow {
+        height: 450px !important;
+      }
+
+      #join {
+        display: none;
+      }
+    }
+
+    .backdrop {
+      /* filter: blur(2px);
+      -webkit-filter: blur(2px); */
+      background-color: rgba(30, 31, 34, 0.9);
+    }
+
+    @media (max-width: 538px) {
+      .banner-area {
+        height: 125vh !important;
+      }
+    }
+
+    @keyframes bgFill {
+      0% {
+        background-size: 100% 0%;
+      }
+
+      100% {
+        background-size: 100% 100%;
+      }
+    }
+
+    @keyframes bgFill1 {
+      0% {
+        background-size: 100% 100%;
+      }
+
+      100% {
+        background-size: 100% 0%;
+      }
+    }
+
+    .dsc-animate {
+      background-image: linear-gradient(to top, #fff, #fff);
+      background-repeat: no-repeat;
+      animation: bgFill 0.7s forwards;
+    }
+
+    .dsc-reverse {
+      background-image: linear-gradient(to top, #fff, #fff);
+      background-repeat: no-repeat;
+      animation: bgFill1 0.7s forwards;
+    }
+  </style>
+</head>
+
+<body data-spy="scroll" data-target=".fixed-top" class="hide-scroll">
+
+  <nav class="navbar navbar-expand-lg bg-black fixed-top trans-navigation vw-100 header-white">
+    <div class="container">
+      <a class="navbar-brand nav-link" href="#home">
+        <h5 class="title-effect">Christmas Challenge</h5>
+      </a>
+      <button class="navbar-toggler navbar-dark cmr-20 mobile-menu-icon no-outline" type="button" data-toggle="collapse"
+        data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+        </span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse justify-content-end cmr-10" id="mainNav">
+      <ul class="navbar-nav ">
+        <li class="nav-item">
+          <a class="nav-link hover-underline-animation" href="#home">Home <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link hover-underline-animation" href="#prizes">Prizes</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link hover-underline-animation" href="#section_3">How</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link hover-underline-animation" href="#dsc">Discord</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link hover-underline-animation" href="#FAQ">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link hover-underline-animation" href="../rules">Rules</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  hover-underline-animation" href="../register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  hover-underline-animation" href="../login">Login</a>
+        </li>
+      </ul>
+    </div>
+
+  </nav>
+  <!--MAIN HEADER AREA END -->
+
+  <!--MAIN BANNER AREA STARt -->
+  <div id="home" class="banner-area banner-1"
+    style="background-image:  radial-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0)), url({% static 'christmas.png' %});">
+    <div class="snowflakes" aria-hidden="true">
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+      <div class="snowflake">
+        <div class="inner">❅</div>
+      </div>
+    </div>
+    <div class="overlay gr-overlay"></div>
+
+    <div class="d-table h-100">
+      <div class="d-table-cell">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 m-auto text-center col-sm-12 col-md-12">
+              <div class="banner-content">
+                <img class="hack-banner showcase-top" src="{% static 'logo.png' %}">
+                <h1 class="banner-title showcase-left">Open Source <br>Christmas Coding Challenge</h1>
+                <h3 class="banner-title showcase-left">Deadline: December 25th, 2023 <a
+                    href="https://en.wikipedia.org/wiki/Anywhere_on_Earth">AoE</a>
+                </h3>
+                <div class="blur-back p-3">
+                  <p class="showcase-right m-0">Get free development containers to impact the open source realm with
+                    your
+                    contributions. Contribute by developing features, fixing bugs, writing code, resolving issues,
+                    or
+                    writing documentation for any open source project, to win cloud computing resources for an
+                    entire
+                    year, based on the potential impact of your contribution according to our panel of judges.</p>
+                </div>
+                <div class="button-box">
+                  <a href="{% url 'registration' %}" class="btn landing-register col-md-6 showcase-bottom">Register
+                    Today!</a>
+                  <a href="{% url 'login' %}" class="btn landing-login col-md-6 showcase-bottom">Login</a>
+                  <a href="https://discord.gg/rbWtyWt3cP" id="discord"
+                    class="btn discord1 text-center text-white col-md-6 showcase-bottom">Discord</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="countdown-timer">
+
+    <div class="counter d-flex align-items-center justify-content-center h-100 py-5 my-2"
+      style="flex-direction: column;">
+      <div class="balloon white">
+        <div class="star-red"></div>
+        <div class="face">
+          <div class="eye"></div>
+          <div class="mouth happy"></div>
+        </div>
+        <div class="triangle"></div>
+        <div class="string"></div>
+      </div>
+
+      <div class="balloon red">
+        <div class="star"></div>
+        <div class="face">
+          <div class="eye"></div>
+          <div class="mouth happy"></div>
+        </div>
+        <div class="triangle"></div>
+        <div class="string"></div>
+      </div>
+
+      <div class="balloon blue">
+        <div class="star"></div>
+        <div class="face">
+          <div class="eye"></div>
+          <div class="mouth happy"></div>
+        </div>
+        <div class="triangle"></div>
+        <div class="string"></div>
+      </div>
+
+      <div id="timer"></div>
+      <h1> Challenge ends December 25, 2023, AoE </h1>
+    </div>
+  </section>
+  <!--MAIN HEADER AREA END -->
+
+  <!-- PRIZES SECTION -->
+  <section id="prizes" class=" bg-feature">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-sm-12 mb-3 mt-3">
+          <h2 class="text-uppercase text-letter-spacing-xs my-0 text-center mb-3 mt-3 text-white p-5 fs-1">
+            Prizes!
+          </h2>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container mb-5 mt-5 bg-cream">
+    <div class="pricing card-deck flex-column flex-md-row mb-3">
+
+      <div class="card gold prize-box card-pricing popular shadow text-center mb-4">
+        <div class="front" data-toggle="tooltip">
+          <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-green text-dark shadow-sm gold-label">Best
+            overall</span>
+          <div class="bg-transparent card-header pt-4 border-0">
+            <h1 class="h1 font-weight-normal text-black text-center mb-0"> 16 VCPU, 64 GB Cloud Server</h1>
+          </div>
+          <div class="d-flex justify-content-center pt-0">
+            <img class="my-3 w-75" src="{% static 'images/images/prizes/cloud-server.png' %}">
+          </div>
+        </div>
+        <div class="back gold-label">
+          <div class="d-flex first-card h-100" style="flex-direction: column;">
+            <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-green text-dark shadow-sm gold-label">Best
+              overall</span>
+            <div class="d-flex align-items-center h-100 border-bt">
+              <span class="text-dark d-none">The esteemed winner of this award will receive an
+                extraordinary prize—an entire
+                year's access to a virtual machine boasting a staggering 16 cores and a robust 64GB Random Access Memory
+                (RAM).
+                This prize package mirrors the capabilities of industry-leading cloud services like AWS EC2 m4.4xlarge
+                and
+                Hetzner CCX43, providing an unparalleled computational powerhouse for your endeavors.</span>
+              <h5 class="text-dark">The esteemed winner of this award will receive an
+                extraordinary prize—an entire
+                year's access to a virtual machine boasting a staggering 16 cores and a robust 64GB Random Access Memory
+                (RAM).
+                This prize package mirrors the capabilities of industry-leading cloud services like AWS EC2 m4.4xlarge
+                and
+                Hetzner CCX43, providing an unparalleled computational powerhouse for your endeavors.</h5>
+            </div>
+            <mark class="rounded-text mt-auto">
+              <p class="text-dark m-0">Don't miss this chance to be the best individual or a team!</p>
+            </mark>
+          </div>
+        </div>
+      </div>
+
+      <div class="card silver prize-box card-pricing black shadow text-center mb-4">
+        <div class="front" data-toggle="tooltip">
+          <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-green text-dark shadow-sm silver-label">4
+            winners</span>
+          <div class="bg-transparent card-header pt-4 border-0">
+            <h1 class="h1 font-weight-normal text-black text-center mb-0"> 4 VCPU, 16 GB Container</h1>
+          </div>
+          <div class="d-flex justify-content-center pt-0">
+            <img class="my-3 w-100" src="{% static 'images/images/prizes/docker.png' %}">
+          </div>
+        </div>
+        <div class="d-flex back silver h-100" style="flex-direction: column;">
+          <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-green text-dark shadow-sm silver-label">4
+            winners</span>
+          <div class="d-flex h-100" style="flex-direction: column;">
+            <div class="d-flex align-items-center h-100 border-bt">
+              <h5>Each winner will receive an exclusive opportunity to harness the power of a
+                high-performance Docker container
+                for an entire year, equipped with 4 Virtual Central Processing Units (vCPUs) and a robust 16GB Random
+                Access Memory (RAM).</h5>
+            </div>
+            <mark class="rounded-text mt-auto">
+              <p class="text-dark m-0">Don't miss this chance to be one of the four exceptional individuals or teams!
+              </p>
+            </mark>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bronze prize-box card-pricing navy shadow text-center mb-4">
+        <div class="front" data-toggle="tooltip">
+          <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-green text-dark shadow-sm bronze-label">16
+            winners</span>
+          <div class="bg-transparent card-header pt-4 border-0">
+            <h1 class="h1 font-weight-normal text-black text-center mb-0"> 2 VCPU, 8 GB Container</h1>
+          </div>
+          <div class="d-flex justify-content-center pt-0">
+            <img class="my-3 w-100" src="{% static 'images/images/prizes/docker.png' %}">
+          </div>
+        </div>
+        <div class="back bronze-label">
+          <div class="d-flex h-100" style="flex-direction: column;">
+            <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-green text-dark shadow-sm bronze-label">16
+              winners</span>
+            <div class="d-flex align-items-center h-100 border-bt">
+              <h5>Each winner will receive an exclusive opportunity to harness the power of a
+                high-performance Docker container
+                for an entire year, equipped with 2 Virtual Central Processing Units (vCPUs) and a robust 8GB Random
+                Access Memory (RAM).</h5>
+            </div>
+            <mark class="rounded-text mt-auto">
+              <p class="text-dark m-0">Don't miss this chance to be one of the sixteen exceptional individuals or teams!
+              </p>
+            </mark>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <section class="timeline-section section-padding" id="section_3">
+    <div class="section-overlay"
+      style=" background-image: linear-gradient(to top, #1B1717b3, #810000), url({% static 'seamless.avif' %}); min-height: 100vh;">
+    </div>
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-12 text-center">
+          <h2 class="text-cream mb-4">How does it work?</h2>
+        </div>
+
+        <div class="col-lg-10 col-12 mx-auto">
+          <div class="timeline-container">
+            <ul class="vertical-scrollable-timeline" id="vertical-scrollable-timeline">
+              <div class="list-progress">
+                <div class="inner"></div>
+              </div>
+              <li>
+                <h4 class="text-cream mb-3">Register to Particapte</h4>
+
+                <p class="text-cream">Developers kick off their journey by registering on our website, unlocking access
+                  to a development experience until Christmas.</p>
+
+                <div class="icon-holder">
+                  <i class="fa-regular fa-address-card"></i>
+                </div>
+              </li>
+
+              <li>
+                <h4 class="text-cream mb-3">Verify Your Email and Phone Number</h4>
+
+                <p class="text-cream">Participants verify their email and number within the dashboard, ensuring a safe
+                  and trusted environment</p>
+
+                <div class="icon-holder">
+                  <i class="fa-regular fa-envelope"></i>
+                </div>
+              </li>
+              <li>
+                <h4 class="text-cream mb-3">Claim Your Free Development Coding Space</h4>
+
+                <p class="text-cream">After verification, you can claim your free development container, which you can
+                  use to develop your contribution to open source.</p>
+
+                <div class="icon-holder">
+                  <i class="fa-solid fa-table-columns"></i>
+                </div>
+              </li>
+              <li>
+
+                <h4 class="text-cream mb-3">Work On Your Open Source Contribution</h4>
+
+                <p class="text-cream">With verification complete, you can dive into the heart of working on your
+                  contributing to any open source project of your choice that aligns with your skills and passions.</p>
+
+                <div class="icon-holder">
+                  <i class="fa-solid fa-code-branch"></i>
+                </div>
+              </li>
+
+              <li>
+                <h4 class="text-cream mb-3">Submit Your Work</h4>
+
+                <p class="text-cream">You can use the submission area in the dashboard, to submit your work to win a
+                  prize. It's the platform to present your hard work and emphasize and highlight the potential impact of
+                  your work.</p>
+
+                <div class="icon-holder">
+                  <i class="fa-solid fa-square-check"></i>
+                </div>
+              </li>
+
+
+              <li>
+                <h4 class="text-cream mb-3">Judging Process</h4>
+
+                <p class="text-cream">Expert judges carefully assess each submission, evaluating the impact and
+                  significance of the contributions to notable open source repositories.</p>
+
+                <div class="icon-holder">
+                  <i class="fa-solid fa-gavel"></i>
+                </div>
+              </li>
+
+              <li>
+                <h4 class="text-cream mb-3">Winner Announcement</h4>
+
+                <p class="text-cream">After rigorous evaluation, the winners emerge, recognized for their outstanding
+                  contributions. Prizes, including a one-year virtual machine access and certificates of achievement,
+                  await the champions.</p>
+
+                <div class="icon-holder">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+              </li>
+
+              <li>
+                <h4 class="text-cream mb-3">Enjoy your servers for a year</h4>
+
+                <p class="text-cream">If you are selected to be a winner, you can use your compute resources for a full
+                  year.</p>
+
+                <div class="icon-holder ms-1">
+                  <i class="fa-solid fa-square-check"></i>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCORD SECTION -->
+  <section id="dsc" class="bg-feature" style="border-bottom: 2px solid #810000;">
+    <div class="bg-feature">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-sm-12 mb-3 mt-3">
+            <h2 class="text-uppercase text-letter-spacing-xs my-0 text-center mb-3 mt-3 text-white p-5 fs-1">
+              Join Discord!
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="body bg-cream">
+      <div class="d-flex justify-content-center align-items-center w-75">
+        <div class="card my-5 w-75 w-md-25 shadow">
+          <div class="row h-100">
+            <div class="col-4 h-100 p-0" style="background-color: #1E1F22;">
+              <div class="d-flex justify-content-center align-items-center h-100"
+                style="border-top-left-radius: 0.375rem; border-right: 2px solid #fff !important;">
+                <img class="mx-4 img-dsc" src="{% static 'images/Discord_logo.png' %}" style="height: 20%;">
+              </div>
+            </div>
+            <div class="col-8 h-100 p-0 backdrop">
+              <div class="d-flex justify-content-center align-items-center h-100" style="flex-direction: column;">
+                <h4 id="join" class="text-white text-center px-2 px-md-3 mb-5 w-100 w-md-50">
+                  We are waiting for you!
+                </h4>
+                <h5 class="text-white text-center px-2 px-md-3 w-100 w-md-50">
+                  Click the invitation link to become a part of the conversation.
+                  If you have questions, we're eager to welcome you to our channel to solve them!
+                </h5>
+                <div class="d-flex justify-content-center align-items-center w-100 mt-5">
+                  <a href="https://discord.gg/rbWtyWt3cP" id="discord"
+                    class="btn discord text-center text-white w-75 w-md-25 link mx-2">Discord</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="FAQ" class="faq section-bg pt-3">
+    <section class="faq-section bg-cream section-padding-faq" id="section_4">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-6 col-12">
+            <h2 class="mb-4">Frequently Asked Questions</h2>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <div class="col-lg-5 col-12">
+            <img src="{% static 'faq.png' %}" class="img-fluid" alt="FAQs">
+          </div>
+
+          <div class="col-lg-6 col-12 m-auto mt-0">
+            <div class="accordion" id="accordionExample">
+
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button pt-4 pt-lg-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Who can participate?
+                  </button>
+                </h2>
+
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    The first step to attend would be to register. It does not matter if you are an experienced
+                    programmer or a new one. Candidates are welcomed to join at all age ranges and countries from all
+                    around the globe.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Can I form a team with my friend?
+                  </button>
+                </h2>
+
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Yes, you can work as a group.
+                    Certificates and/or prizes will only be given to the one registered contestant.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Will I get a certificate even if I am not a winner?
+                  </button>
+                </h2>
+
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Yes! all candidates who <strong>finished their work, submitted it and requested a
+                      certificate</strong> will be given a certificate of participation. </p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    How do I keep in touch?
+                  </button>
+                </h2>
+
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    You can join our <a href="https://discord.gg/rbWtyWt3cP" id="discord">Discord server</A> to join the community, or you can e-mail us at: <a href="mailto:challenge@parkyeri.com">challenge@parkyeri.com</a> if you have any questions or issues.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                    How do I get my development container?
+                  </button>
+                </h2>
+
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    After registering and verifying your phone number, you can create development containers on our remote development platform.
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-black p-3 pb-0">
+      <div class="footer-column">
+        <h3><strong>About Us</strong></h3>
+        <p>
+          Parkyeri is an Istanbul based company with its scope of business covering software development, operations and
+          consultancy.
+        </p>
+      </div>
+      <div class="footer-column">
+        <h3><strong>Navigation</strong></h3>
+        <div class="row">
+          <div class="col-md-6">
+            <ul>
+              <li><a class="smooth-scroll foot-nav" href="#home">Home</a></li>
+              <li><a class="smooth-scroll foot-nav" href="#prizes">Prizes</a></li>
+              <li><a class="smooth-scroll foot-nav" href="#section_3">How</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul>
+              <li><a class="smooth-scroll foot-nav" href="#dsc">Discord</a></li>
+              <li><a class="smooth-scroll foot-nav" href="#FAQ">FAQ</a></li>
+              <li><a class="smooth-scroll foot-nav" href="../rules">Rules</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3><strong>Links</strong></h3>
+        <ul>
+          <li> <a class="foot-nav" href="{% url 'privacy' %}" target="_blank">Privacy Policy</a></li>
+          <li><a class="foot-nav" href="{% url 'conduct' %}" target="_blank">Code of Conduct</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3><strong>Contact Us</strong></h3>
+        <ul class="social-links" style="padding-top: 5px;">
+
+          <a href="https://www.parkyeri.com/" target="_blank">
+            <img class="img-effect" src="{% static 'images/images/links/parkyeri_logo.png' %}" width="30px"
+              hieght="30px">
+          </a>
+          <a href="mailto:challenge@parkyeri.com?subject=about christmas challenge" target="_blank">
+            <img class="img-effect" src="{% static 'images/images/links/mail.png' %}" width="30px" hieght="30px">
+          </a>
+          <a href="https://www.linkedin.com/company/parkyeri/" target="_blank">
+            <img class="img-effect" src="{% static 'images/images/links/linkedin.png' %}" width="30px" hieght="30px">
+          </a>
+        </ul>
+      </div>
+    </footer>
+
+    <div class="copyright" style="background-color:#000; color:black; text-align:center">
+      <div class="d-flex justify-content-center">
+        <img src="{% static 'images/parkyeri-adam.png' %}" class="img-fluid p-1 pe-0" style="height: 50px;">
+        <img src="{% static 'images/parkyeri-yazi.png' %}" class="img-fluid p-1" style="height: 50px;">
+      </div>
+      <p class="text-center text-white" style="font-size: small;">&copy; 2023 Parkyeri AS. All Rights Reserved.</p>
+    </div>
+
+    <!-- Essential Scripts -->
+    <!-- Bootstrap 4.3.1 -->
+    <script src="{% static 'plugins/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- Dynamic  Header -->
+    <script src="{% static 'js/landing_js/custom.js' %}"></script>
+    {% comment %} Countdown Timer {% endcomment %}
+    <script src="{% static 'js/landing_js/countdown.js' %}"></script>
+    {% comment %} Template js {% endcomment %}
+    <script src="{% static 'js/template/jquery.min.js' %}"></script>
+    <script src="{% static 'js/template/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/template/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/template/js/click-scroll.js' %}"></script>
+    <script src="{% static 'js/template/custom.js' %}"></script>
+    <!-- Prize Section -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/2b86215731.js" crossorigin="anonymous"></script>
+    <script>
+      const cardGold = document.querySelector(".gold");
+      const cardSilver = document.querySelector(".silver");
+      const cardBronze = document.querySelector(".bronze");
+
+      cardGold.addEventListener("click", function () {
+        cardGold.classList.toggle("flip");
+      });
+      cardSilver.addEventListener("click", function () {
+        cardSilver.classList.toggle("flip");
+      });
+      cardBronze.addEventListener("click", function () {
+        cardBronze.classList.toggle("flip");
+      });
+    </script>
+    <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip({ placement: 'top', title: 'Click me' })
+      })
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#discord").hover(
+          function () {
+            var dsc = document.getElementsByClassName('col-4');
+            for (var i = 0; i < dsc.length; i++) {
+              dsc[i].classList.remove('dsc-reverse');
+              dsc[i].classList.add('dsc-animate');
+            }
+          },
+          function () {
+            var dsc = document.getElementsByClassName('col-4');
+            for (var i = 0; i < dsc.length; i++) {
+              dsc[i].classList.add('dsc-reverse');
+              dsc[i].classList.remove('dsc-animate');
+            }
+          }
+        );
+      });
+    </script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</body>
+
+</html>

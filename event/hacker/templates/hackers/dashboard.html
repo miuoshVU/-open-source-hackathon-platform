@@ -1,0 +1,471 @@
+{% extends 'hackers/base.html' %}
+
+{% load static %}
+{% block content %}
+
+<head>
+  {% comment %}
+  <link rel="stylesheet" href="{% static 'css/landing_css/style.css' %}"> {% endcomment %}
+  <style>
+    body {
+      background: var(--bs-white);
+    }
+
+    .card-header {
+      height: 20% !important;
+    }
+
+    .card-footer {
+      height: 20% !important;
+    }
+
+    .font-step3 {
+      font-size: 13px !important;
+    }
+
+    @media (max-width: 759px) {
+      .card {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+      }
+
+      .d-flex {
+        margin: 0 !important;
+      }
+
+    }
+
+    @media (min-width: 760px) and (max-width: 767px) {
+      .card {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+    }
+
+
+    @media (min-width: 769px) and (max-width: 991.98px) {
+      .card-text {
+        font-size: 10px;
+      }
+
+      .font-step3 {
+        font-size: 10px !important;
+      }
+
+
+    }
+
+    @media (min-width: 1083px) and (max-width: 1120px) {
+
+      .font-step3 {
+        font-size: 11px !important;
+      }
+    }
+
+
+    @media (min-width: 986px) and (max-width: 1082px) {
+
+
+      .font-step3 {
+        font-size: 8px !important;
+      }
+    }
+
+    .checkmark__circle {
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      stroke-width: 2;
+      stroke-miterlimit: 10;
+      stroke: #7ac142;
+      fill: none;
+      animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+    }
+
+    .checkmark {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: block;
+      stroke-width: 2;
+      stroke: #fff;
+      stroke-miterlimit: 10;
+      margin: 10% auto;
+      box-shadow: inset 0px 0px 0px #7ac142;
+      animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+    }
+
+    .checkmark__check {
+      transform-origin: 50% 50%;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+    }
+
+    @keyframes stroke {
+      100% {
+        stroke-dashoffset: 0
+      }
+    }
+
+    @keyframes scale {
+
+      0%,
+      100% {
+        transform: none
+      }
+
+      50% {
+        transform: scale3d(1.1, 1.1, 1)
+      }
+    }
+
+    @keyframes fill {
+      100% {
+        box-shadow: inset 0px 0px 0px 30px #7ac142
+      }
+    }
+
+    .round {
+      border-radius: 20px;
+      border-width: 0px;
+    }
+
+    .color-bg {
+      background-color: #eeebddb4;
+    }
+
+    .discord {
+      background-color: #9656ce;
+    }
+
+    .btn-color {
+      background-color: rgb(129, 0, 0);
+    }
+
+    .bg-cream {
+      background-color: #eeebdd;
+    }
+
+    .justify-content-center {
+      padding: 10px 0 10px 0;
+      margin: 10px 0 10px 0;
+    }
+
+    .btn:active {
+      transform: scale(1.03);
+      transition: all 0.1s ease-out;
+    }
+
+    .container-step {
+      height: 400px !important;
+    }
+
+    .message-align {
+      margin-top: 4rem !important;
+    }
+
+    @media (min-width: 767.01px) and (max-width: 991.98px) {
+      .card {
+        height: 80% !important;
+      }
+    }
+
+    #myButton:hover,
+    #discord:hover,
+    #submit:hover,
+    #container:hover,
+    #coder {
+      border-color: #000;
+    }
+
+    .card-pad {
+      padding: 1.5em;
+    }
+  </style>
+</head>
+
+<body class="text-center"
+  style="background-image:  radial-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.1)), url({% static 'christmas.png' %}); margin: 10px;">
+  <div class="row m-1 message-align">
+    <div class="col-12 m-1">
+      {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-dismissible col-md-3 col-lg-12 w-100" role="alert">
+        {{message|safe}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="card-header d-flex justify-content-center w-100">
+    <div class="w-50 nav-col p-4">
+    <h1 class="text-center text-white p-1"> Welcome!
+    </h1>
+    <h2 class="text-center text-white p-1" style="font-size: 22px; font-weight: bolder;">Thank you for registering for
+      the Christmas Coding
+      Challenge.</h2>
+    <h5 class="text-center text-white p-1" style="font-weight: bold; font-size: 20px;">Follow the steps below to proceed
+      with the challenge.</h5>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center">
+    <div id="page" class="card m-5 mt-0 round color-bg h-100 w-50">
+
+      <div class="container text-center d-flex flex-column justify-content-center p-2">
+        {% if user.joined_discord %}
+        <div class="card-header d-flex justify-content-center align-items-center text-center bg-cream">
+          <div class="form-check m-0">
+            <form id="myForm" method="POST" action="{% url 'discord' %}">
+              {% csrf_token %}
+              <div class="d-flex justify-content-center align-items-center">
+                <input class="form-check-input me-2 mb-1" type="checkbox" value="" id="check1" name="myCheckbox" checked>
+                <h5 class="text-center text-dark m-0">Step 1: Join Discord</h5>
+                <div class="ms-2"> <svg class="checkmark"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                  </svg>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        {% else %}
+        <div class="card text-dark bg-cream mt-5 mb-5 round">
+          <div class="card-header d-flex justify-content-center align-items-center text-center">
+            <div class="form-check m-0">
+              <form id="myForm" method="POST" action="{% url 'discord' %}">
+                {% csrf_token %}
+                <input class="form-check-input" type="checkbox" value="" id="check1" name="myCheckbox">
+                <h5 class="text-center text-dark">Step 1: Join Discord</h5>
+              </form>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if not user.joined_discord %}
+          <div class="card-body">
+            <p class="card-text text-dark">Connect with like-minded individuals, share your thoughts, and engage in
+              lively discussions. Whether you're here for the fun banter, to seek advice, or to make new friends, our
+              Discord community is the place to be. Click the invite link and become a part of the conversation – we
+              can't
+              wait to meet you! </p>
+          </div>
+          <div class="card-footer d-flex mb-0 align-items-center justify-content-center">
+            <a href="https://discord.gg/rbWtyWt3cP" target="_blank" id="discord"
+              class="btn discord text-center text-white link">Discord</a>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if not user.is_email_verified %}
+        <div class="card text-dark bg-cream w-100 w-md-100 mt-5 mb-5 round">
+          <div class="card-header d-flex justify-content-center align-items-center text-center">
+            <h5>Step 2: Verify Your Email</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-dark">We kindly ask you to verify your email <strong>'{{user.email}}'</strong>
+            </p>
+            <p class="card-text text-dark">These quick verifications help us
+              maintain a genuine and trustworthy environment.</p>
+          </div>
+          <div class="card-footer d-flex mb-0 align-items-center justify-content-center">
+            <form method="post">
+              {% csrf_token %}
+              {% if not user.is_email_verified %}
+              <button id="myButton" type="submit" class="btn btn-color text-white" name="email-btn">Verify
+                Email</button>
+              {% else %}
+              <button id="myButton" type="submit" class="btn btn-color border-danger text-dark" name="email-btn"
+                disabled>Verify
+                Email</button>
+              {% endif %}
+            </form>
+          </div>
+        </div>
+        {% else %}
+        <div class="card-header d-flex justify-content-center align-items-center text-center bg-cream card-pad">
+          <h5 class="m-0">Step 2: Verify Your Email</h5>
+          <div> <svg class="checkmark ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+              <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+              <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+            </svg>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if not user.is_email_verified %}
+        <div class="card text-dark bg-cream w-100 w-md-100 mt-5 mb-5 round">
+          <div class="card-header d-flex justify-content-center align-items-center text-center">
+            <h5>Step 3: Verify Your Phone</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-dark">We kindly ask you to verify your email <strong>'{{user.email}}'</strong> and
+              phone number
+              <strong id="phone-num">'{{request.user.country_code}} {{user.phone}}'</strong>.
+            </p>
+            <p class="card-text text-dark">These quick verifications help us
+              maintain a genuine and trustworthy environment.</p>
+          </div>
+          <div class="card-footer d-flex mb-0 align-items-center justify-content-center">
+            <form method="post">
+              {% csrf_token %}
+              <button id="myButton" type="submit" class="btn btn-color border-danger text-dark" name="phone-btn" disabled>Verify
+                Phone</button>
+            </form>
+          </div>
+        </div>
+        {% elif user.is_email_verified and not user.is_phone_verified %}
+        <div class="card text-dark bg-cream w-100 w-md-100 mt-5 mb-5 round">
+          <div class="card-header d-flex justify-content-center align-items-center text-center">
+            <h5>Step 3: Verify Your Phone</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-dark">We kindly ask you to verify your email <strong>'{{user.email}}'</strong> and
+              phone number
+              <strong id="phone-num">'{{request.user.country_code}} {{user.phone}}'</strong>.
+            </p>
+            <p class="card-text text-dark">These quick verifications help us
+              maintain a genuine and trustworthy environment.</p>
+          </div>
+          <div class="card-footer d-flex mb-0 align-items-center justify-content-center">
+            <form method="post">
+              {% csrf_token %}
+              <button id="myButton" type="submit" class="btn btn-color border-danger text-white" name="phone-btn">Verify
+                Phone</button>
+            </form>
+          </div>
+        </div>
+        {% else %}
+        <div class="card-header d-flex justify-content-center align-items-center text-center bg-cream card-pad">
+          <h5 class="m-0">Step 3: Verify Your Phone</h5>
+          <div> <svg class="checkmark ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+              <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+              <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+            </svg>
+          </div>
+        </div>
+        <!-- <div class="card-body d-flex justify-content-center align-items-center">
+            <div>
+              <h3 class="card-text text-dark"> Bravo! </h3>
+              <p class="card-text text-dark"> You have already been verified! </p>
+              <div> <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                  <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                  <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                </svg>
+              </div>
+            </div>
+          </div> -->
+        {% endif %}
+          {% if user.is_submitted is not True %}
+          <div class="card text-dark bg-cream w-100 w-md-100 mt-5 mb-5 round">
+            <div class="card-header d-flex justify-content-center align-items-center text-center">
+              <h5>Step 4: Apply for a Prize</h5>
+            </div>
+          <div class="card-body">
+            <p class="card-text text-dark font-step3"> You can apply for a prize, by submitting your open source
+              contribution
+              using these forms.
+            </p>
+          </div>
+          <div class="card-footer d-flex mb-0 align-items-center justify-content-center">
+            <a href="{% url 'profile' request.user.id %}" id="submit" type="submit"
+              class="btn btn-color text-white">Application Form
+            </a>
+          </div>
+          </div>
+          {% else %}
+          <div class="card-header d-flex justify-content-center align-items-center text-center bg-cream card-pad">
+            <h5 class="m-0">Step 4: Apply for a Prize</h5>
+            <div> <svg class="checkmark ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+              <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+              <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+            </svg>
+          </div>
+          </div>
+          {% endif %}
+      </div>
+      <div class="mb-5" style="border: 0.5px solid #000; opacity: 0.2"></div>
+      <div class="row w-100 d-flex justify-content-center my-0 py-0">
+        <div class="card text-dark bg-cream mb-5 round container-step p-0">
+          <div class="card-header d-flex justify-content-center align-items-center text-center">
+            <h5>Container Spin Up
+              (Optional)
+            </h5>
+          </div>
+          <div class="card-body">
+            {% if not user.is_email_verified or not user.is_phone_verified %}
+            <p class="card-text text-dark">You can use Parkyeri's servers for this hackathon. However, you must have
+              verified
+              your email and phone number.
+            </p>
+            {% elif not user.coder_password %}
+            <p class="card-text text-dark">You can use Parkyeri's servers for this hackathon. If you wish so, you can
+              click below to
+              activate your coder space and get configuration data.</p>
+            {% else %}
+            <p class="card-text text-dark">
+              You can use the coder space at the following address:
+              <A HREF="http://coder.challenge.parkyeri.com/" target="_blank">https://coder.challenge.parkyeri.com/</A>
+            <p>Your login is: <strong>{{ user.email }}</strong></p>
+            <p>Your password is: <strong>{{ user.coder_password }}</strong></p>
+            {% endif %}
+          </div>
+          <div class="card-footer d-flex mb-0 align-items-center justify-content-center">
+            <form method="post">
+              {% csrf_token %}
+              {% if not user.is_email_verified or not user.is_phone_verified %}
+              <button name="container-btn" type="submit" class="btn btn-color border-danger text-dark" id="coder"
+                disabled>Activate my Coder Space</button>
+              {% elif not user.coder_password %}
+              <button name="container-btn" type="submit" class="btn btn-color text-white" id="coder">Activate my Coder
+                Space</button>
+              {% else %}
+              <button name="container-btn" type="submit" class="btn btn-color text-white" id="coder">Reset Coder Space
+                Password</button>
+              {% endif %}
+            </form>
+          </div>
+        </div>
+      </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var el = document.getElementById("phone-num").innerText
+    var extractedCode = el.match(/\(\+(\d+)\)\s*(\d+)/);
+
+    if (extractedCode !== null) {
+      let phone = '+' + extractedCode[1] + ' ' + extractedCode[2];
+      document.getElementById("phone-num").innerText = phone
+    }
+  });
+</script>
+<script>
+
+  var discord = document.getElementById("check1");
+  const myForm = document.getElementById('myForm');
+
+  discord.addEventListener('change', function () {
+    myForm.submit();
+  });
+
+  const discordLink = document.getElementById('discord');
+
+  discordLink.addEventListener('click', function (event) {
+    fetch(myForm.action, {
+      method: 'POST',
+      body: new FormData(myForm)
+    }).then(response => {
+      if (response.ok) {
+        location.reload();
+      }
+    })
+
+  });
+
+</script>
+{% endblock %}

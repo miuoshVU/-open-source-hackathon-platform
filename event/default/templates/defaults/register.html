@@ -1,0 +1,276 @@
+{% extends 'defaults/form_base.html' %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<script src="{% static 'js/register/register.js' %}" defer></script>
+<script src="{% static 'js/form/inputRestrictions.js' %}" defer></script>
+<style>
+  .btn:hover {
+    color: #00873e !important;
+    filter: brightness(140%);
+  }
+
+  .form-contact-link:hover {
+    opacity: 0.7;
+  }
+
+  .btn:active {
+    transform: scale(1.03);
+    transition: all 0.1s ease-out;
+  }
+</style>
+<title>Christmas Challenge Register</title>
+{% endblock head %} {% block form %}
+<form style="height: 85%" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form-whole">
+    <!-- 0 : General Information -->
+    <div class="form-page">
+      <div class="row mb-4">
+        <div class="col-12 text-center g-5">
+          <h3 class="text-dark">General Information</h3>
+        </div>
+      </div>
+      <div class="row g-3">
+        <div class="col-md-6 col-sm-12">
+          <div class="form-floating">
+            {{create_user_form.first_name}}
+            <label class="text-muted" for="id_first_name">
+              <span class="fw-normal text-dark">First Name</span>
+              <span class="text-danger text-bold">*</span>
+            </label>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="form-floating">
+            {{create_user_form.last_name}}
+            <label class="text-muted" for="id_last_name"
+              ><span class="fw-normal text-dark">Last Name</span>
+              <span class="text-danger text-bold">*</span></label
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row mt-1 g-3">
+        <div class="col text-center">
+          <label class="text-danger d-none" id="email_error_label"
+            >This Email is Already Registered</label
+          >
+          <div class="form-floating">
+            {{create_user_form.email}}
+            <label class="text-muted" for="id_email"
+              ><span class="fw-normal text-dark">Email address</span>
+              <span class="text-danger text-bold">*</span></label
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 mt-2">
+        <div class="col-md-6 col-sm-12">
+          <div class="form-floating">
+            {{create_user_form.country_code}}
+            <label class="text-muted" for="id_country_code">
+              <span class="fw-normal text-dark"> Country Code</span>
+              <span class="text-danger text-bold">*</span>
+            </label>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="form-floating">
+            {{create_user_form.phone}}
+            <label class="text-muted" for="id_phone"
+              ><span class="fw-normal text-dark">Mobile Phone Number</span>
+              <span class="text-danger text-bold">*</span></label
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col text-start">
+          <a href="{% url 'login' %}" class="btn btn-small" type="button"
+            ><i class="fa-solid fa-chevron-left"></i> Sign In</a
+          >
+        </div>
+        <div class="col text-end">
+          <button class="btn btn-small" type="button" data-next-button>
+            Next <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- 3 : Password -->
+    <div class="form-page d-none w-100">
+      <div class="row">
+        <div class="col-12 text-center text-dark">
+          <h3>Choose a password</h3>
+        </div>
+      </div>
+      <div class="row g-3 mt-1">
+        <div class="col-sm-12">
+          <div class="form-floating">
+            {{create_user_form.password1}}
+            <label class="text-muted" for="id_password1"
+              ><span class="fw-normal text-dark">Password</span>
+              <span class="text-danger text-bold">*</span></label
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row g-3 d-none" id="password-container">
+        <div class="alert alert-danger alert-dismissible col-12" role="alert">
+          <ul class="list-group list-group-flush" id="password-list"></ul>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-sm-12">
+          <label class="text-danger d-none" id="password2_error_label"
+            >Passwords Must Match</label
+          >
+          <div class="form-floating">
+            {{create_user_form.password2}}
+            <label class="text-muted" for="id_password2"
+              ><span class="fw-normal text-dark">Password Confirmation</span>
+              <span class="text-danger text-bold">*</span></label
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col text-start">
+          <button class="btn btn-small" type="button" data-previous-button>
+            <i class="fa-solid fa-chevron-left"></i> Prev
+          </button>
+        </div>
+        <div class="col text-end">
+          <button class="btn btn-small" type="button" data-next-button>
+            Next <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    {{create_user_form.age.as_hidden}} {{create_hacker_form}}
+    <!-- 4 : Agreements -->
+    <div class="form-page d-none" id="formSubmission">
+      <div class="row">
+        <div class="col-12 text-center text-dark">
+          <h3>Agreements</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-check mt-3">
+            <input
+              class="form-check-input req-input"
+              type="checkbox"
+              onclick="formSubmission()"
+              required
+              value=""
+              id="codeOfConduct"
+            />
+            <label class="form-check-label text-dark" for="codeOfConduct">
+              I have read and agree to the
+              <a
+                href="{% url 'conduct' %}"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Code of Conduct</a
+              >.
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-check mt-3">
+            <input
+              class="form-check-input req-input"
+              type="checkbox"
+              onclick="formSubmission()"
+              required
+              value=""
+              id="termsConditionsPrivacy"
+            />
+            <label
+              class="form-check-label text-dark"
+              for="termsConditionsPrivacy"
+            >
+              I authorize you to share my application/registration information
+              with Christmas Challenge organizers, Parkyeri for event
+              administration, ranking, and administration in-line with the
+              <a
+                href="{% url 'privacy' %}"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Parkyeri's Privacy Policy </a
+              >. I further agree to the<a
+                href="{% url 'rules' %}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Christmas Challenge Rules</a
+              >.
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-check mt-3 d-none" id="date-check">
+            <input
+              class="form-check-input req-input"
+              type="checkbox"
+              onclick="formSubmission()"
+              value=""
+              id="date"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col text-start">
+          <button class="btn btn-small" type="button" data-previous-button>
+            <i class="fa-solid fa-chevron-left"></i> Prev
+          </button>
+        </div>
+        <div class="col text-end">
+          <input
+            type="submit"
+            class="btn btn-small"
+            id="submissionButton"
+            value="Register"
+            disabled
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row d-none" id="error-reminder-container">
+      <div class="col text-center">
+        <p class="text-danger">Please Make Sure All * Fields Are Filled In</p>
+      </div>
+    </div>
+  </div>
+</form>
+<br />
+<p class="text-dark">
+  If you are experiencing any difficulties while registering, please contact the
+  team:
+  <a class="form-contact-link text-dark" href="mailto:challenge@parkyeri.com"
+    >challenge@parkyeri.com</a
+  >
+</p>
+{% endblock form %} {% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $("#datepicker").datepicker("setDate", new Date("1/1/2005"));
+  });
+</script>
+{% endblock %}

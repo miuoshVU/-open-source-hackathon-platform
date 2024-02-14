@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900');
+
+
+/* background code */
+/* Add these styles for the SVG container and animation */
+
+
+#red,
+#blue,
+#light-blue {
+  fill: none;
+  stroke-width: 6;
+  stroke-miterlimit: 10;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+#red {
+  stroke: #FF8C10;
+  opacity: 0.35;
+  animation: show-red 4s infinite ease-in-out;
+}
+
+#blue {
+  stroke: #FF662C;
+  opacity: 0.35;
+  animation: show-blue 4s infinite ease-in-out;
+}
+
+#light-blue {
+  stroke: #000000;
+  stroke-width: 6;
+  opacity: 0.15;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 800;
+  animation: draw-light-blue 4s infinite ease-in-out;
+}
+
+@keyframes draw-light-blue {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes show-red {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes show-blue {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.countdown-timer {
+  display: grid;
+  background-color: #EEEBDD; /* Set background to transparent */
+  color: #000 !important;
+  font-family: 'Lato', sans-serif;
+}
+
+#timer {
+  color: #F6F4F3;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  letter-spacing: 2px;
+  margin-top: 10%;
+  width: 100%;
+}
+
+.counter {
+  position: relative;
+  display: block;
+  justify-items: center;
+  margin: auto;
+  margin-top: 10px;
+  overflow: hidden;
+  width: 50vw;
+  height: 60vh;
+
+  text-align: center;
+}
+
+.countdown-timer .counter h1 {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  margin-top: 2em;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 5px;
+  color: #000000;
+}
+
+#timer {
+  color: #F6F4F3;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  font-size: .5em;
+  letter-spacing: 5px;
+  margin-top: 25%;
+}
+
+.days, .hours, .minutes, .seconds {
+  display: inline-block;
+  padding: 20px;
+  width: 20%;
+  border-radius: 5px;
+}
+
+.days { background: #810000; }
+.hours { background: #00873E; }
+.minutes { background: #810000; }
+.seconds { background: #00873E; }
+
+.numbers {
+    font-family: 'Montserrat', sans-serif;
+    color: #EEEBDD;
+    font-size: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+.white {
+  position: absolute;
+  background: #810000;
+  height: 85px;
+  width: 75px;
+  left: 30%;
+  top: 12%;
+}
+
+.white .triangle {
+  border-bottom: 14px solid #810000;
+}
+
+.white .string {
+  background: #000000;
+  border: 1px solid #810000;
+}
+
+.red {
+    position: absolute;
+    background: #00873E;
+    left: 18%;
+    top: 19%;
+    height: 65px; /* Adjusted height to fix the size */
+    width: 70px; /* Adjusted width to fix the size */
+  }
+  .red .triangle {
+    border-bottom: 14px solid #00873E;
+  }
+  
+  .red .string {
+    background: #00873E;
+    border: 1px solid #00873E;
+  }
+
+.blue {
+  position: absolute;
+  background: #00873E;
+  height: 80px;
+  width: 80px;
+  left: 60%;
+  top: 15%;
+}
+
+.blue .triangle {
+  border-bottom: 14px solid #00873E;
+}
+
+.blue .string {
+  background: #00873E;
+  border: 1px solid rgba(255, 84, 0, 0.9)F;
+}
+
+.balloon {
+  border: 1px solid #000;
+  border-radius: 50% 50% 50% 50%/ 40% 40% 60% 60%;
+  z-index: 2;
+}
+
+.eye {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  top: 40%;
+  left: 22%;
+  background: #000;
+  border-radius: 50%;
+}
+
+.eye:after {
+  content: '';
+  left: 35px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #000;
+  position: absolute;
+}
+
+.mouth {
+  position: absolute;
+  top: 45%;
+  left: 43%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.happy {
+  border: 2px solid;
+  border-color: transparent #EEEBDD #EEEBDD transparent;
+  transform: rotate(45deg);
+}
+
+.triangle {
+  position: absolute;
+  left: 40%;
+  bottom: -10%;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+}
+
+.string {
+  position: absolute;
+  height: 70px;
+  width: 1px;
+  left: 48%;
+  top: 100%;
+  z-index: -1;
+}
+
+.star {
+  width: 20px;
+  height: 20px;
+  background: #FABC02;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.star-red {
+  width: 30px;
+  height: 30px;
+  margin-left: 51px;
+  margin-top: -5px;
+  background: #FABC02;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+  /* 
+---------------------------------------------
+About Us Style
+--------------------------------------------- 
+*/
+
+#about {
+    margin-top: 120px;
+  }
+  
+  .about-us {
+    background-image: url('{% static "about-bg.png" %}');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding: 140px 0px 120px 0px;
+  }
+  
+  .about-us .left-image {
+    margin-right: 45px;
+  }
+  
+  .about-us .services .item {
+    margin-bottom: 30px;
+  }
+  
+  .about-us .services .item .icon {
+    float: left;
+    margin-right: 25px;
+  }
+  
+  .about-us .services .item .icon img {
+    max-width: 70px;
+  }
+  
+  .about-us .services .item h4 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  
+  .about-us .services .item p {
+    color: #fff;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .countdown-timer .counter {
+      overflow: visible; /* Allow content to overflow on mobile */
+      padding: 0 20px; /* Added padding on both sides for white space */
+      margin-bottom: 300px;
+    }
+  
+    .days, .hours, .minutes, .seconds {
+      width: 100%; /* Stacking boxes on top of each other for mobile */
+      margin-bottom: 10px; /* Added margin between stacked boxes for mobile */
+    }
+  
+    .white, .red, .blue, .triangle, .string {
+      display: none; /* Hide balloons, triangles, and strings on mobile */
+    }
+  }

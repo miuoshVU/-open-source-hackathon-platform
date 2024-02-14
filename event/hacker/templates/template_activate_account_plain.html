@@ -1,0 +1,12 @@
+{% autoescape off %}
+Dear {{user.first_name}},
+We kindly request your confirmation by clicking the following link to verify your email:
+
+https://{{domain}}{% url 'activate' uidb64=uid token=token %}
+
+Should you require any assistance, please do not hesitate to reach out to us.
+
+Best regards,
+
+The Christmas Challenge Team
+{% endautoescape %}

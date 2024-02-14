@@ -1,0 +1,82 @@
+
+
+/*---------------------------------------
+  FAQs              
+-----------------------------------------*/
+.faq-section .accordion-item {
+    border: 0;
+  }
+  
+  .faq-section .accordion-button {
+    font-size: var(--h6-font-size);
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  .faq-section .accordion-item:first-of-type .accordion-button {
+    border-radius: var(--border-radius-large);
+  }
+  
+  .faq-section .accordion-button:not(.collapsed) {
+    border-radius: var(--border-radius-large);
+    box-shadow: none;
+    color: var(--primary-color);
+  }
+  
+  .faq-section .accordion-body {
+    color: var(--p-color);
+    font-size: var(--btn-font-size);
+    line-height: 40px;
+  }
+  
+  .hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #608F7A;
+    padding-left: 0 !important;
+    margin-left: 1.7rem;
+	}
+
+	.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #608F7A;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+	}
+
+	.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+	}
+
+  .landing-register:hover {
+    border-color: #fff !important;
+    filter: brightness(200%);
+  }
+
+  .landing-login:hover {
+    border-color: #fff !important;
+    filter: brightness(200%);
+  }
+
+  .banner-title a {
+    color: #dc2020;
+    font-weight: 700;
+    line-height: 50px;
+    text-decoration: none !important;
+  }
+
+  .banner-title a:hover {
+    color: #357B41;
+  }
+
+  @media (max-width: 767.98px) {
+    ul {
+      margin: 0;
+    }
+  }

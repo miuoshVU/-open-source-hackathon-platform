@@ -1,0 +1,88 @@
+{% extends 'organizers/base.html' %} {% block content %}
+<style>
+  .scroll {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+</style>
+<div class="container text-center my-3">
+  <h1>Statistics Page</h1>
+  <div
+    class="row row-cols-md-3 row-cols-sm-1 g-3 mt-2 d-flex justify-content-center"
+  >
+    <div class="col">
+      <div class="card">
+        <div class="card-header text-center">Total Registered Count</div>
+        <div class="card-body text-center">
+          <h5 class="card-title">{{register_count}}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-header text-center">Total Submission Count</div>
+        <div class="card-body text-center">
+          <h5 class="card-title">{{submission_count}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if nationalities_count %}
+  <div class="col mt-5">
+    <div class="card">
+      <div class="card-header text-center">Total Nationalities</div>
+      <div class="card-body text-center">
+        <h5 class="card-title">{{nationalities_count}}</h5>
+      </div>
+    </div>
+  </div>
+  {% endif %} {% if group_by_nationalities %}
+  <div class="col mt-5">
+    <div class="card">
+      <div class="card-header text-center">Group By Nationalities</div>
+      <div class="card-body text-center">
+        {% for country, count in group_by_nationalities.items %}
+        <h5 class="card-title">{{country}}: {{count}}</h5>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %} {% if group_by_sources %}
+  <div class="col mt-5">
+    <div class="card">
+      <div class="card-header text-center">Group Clicks By Sources</div>
+      <div class="card-body text-center">
+        {% for source, count in group_by_sources.items %}
+        <h5 class="card-title">{{source}}: {{count}}</h5>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %} {% if group_by_registered_sources %}
+  <div class="col mt-5">
+    <div class="card">
+      <div class="card-header text-center">
+        Group Registered Users By Sources
+      </div>
+      <div class="card-body text-center">
+        {% for source, count in group_by_registered_sources.items %}
+        <h5 class="card-title">{{source}}: {{count}}</h5>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %} {% if group_by_references %}
+  <div class="col mt-5">
+    <div class="card">
+      <div class="card-header text-center">Group By References</div>
+      <div class="card-body text-center">
+        {% for reference, count in group_by_references.items %}
+        <h5 class="card-title">{{reference}}: {{count}}</h5>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock %}

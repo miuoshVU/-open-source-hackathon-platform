@@ -1,0 +1,178 @@
+{% extends 'hackers/base.html' %}
+
+{% load static %}
+{% block content %}
+
+<head>
+    <script src="{% static 'js/form/inputRestrictions.js' %}" defer></script>
+    <style>
+        body {
+            background: var(--bs-white);
+        }
+
+        .disableScroll {
+            margin: 0;
+            height: 100%;
+            overflow: hidden
+        }
+
+        .btn-color {
+            background-color: rgb(129, 0, 0);
+        }
+
+        .color-bg {
+            background-color: #eeebddb4;
+        }
+
+        .round-left {
+            border-radius: 10px 0 0 0;
+            border-width: 0px;
+            border-color: rgba(0, 0, 0, 0.2);
+            border-width: 0.5px;
+        }
+
+        .round-right {
+            border-radius: 0 10px 0 0;
+            border-width: 0px;
+            border-color: rgba(0, 0, 0, 0.2);
+            border-width: 0.5px;
+        }
+
+        .ver-box {
+            border-radius: 15px;
+            border: 5px solid #fff;
+            -webkit-box-shadow: 6px 7px 24px 0px rgba(66, 68, 90, 1);
+            -moz-box-shadow: 6px 7px 24px 0px rgba(66, 68, 90, 1);
+            box-shadow: 6px 7px 24px 0px rgba(66, 68, 90, 1);
+            background-color: #eeebdd;
+        }
+
+        .btn {
+            background-color: #608F7A !important;
+            color: #000 !important;
+            border-radius: 10px 10px 10px 10px !important;
+        }
+
+        .btn:active {
+            transform: scale(1.01) !important;
+        }
+
+        .card {
+            border-radius: 10px;
+            height: 80% !important;
+        }
+
+
+        .btn-light:hover {
+            filter: brightness(140%);
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body class="text-center"
+    style="background-image:  radial-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.1)), url({% static 'christmas.png' %});">
+    <div class="row m-1 justify-content-center">
+        <div class="col-12 m-1">
+            {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible col-md-3 col-lg-12" role="alert">
+                {{message|safe}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="card col-12 col-md-8 col-lg-7 p-4 ver-box mt-5">
+                <div class="card-body">
+                    <h3 class="card-title text-center text-dark">Phone Verification</h3>
+                    <div class="card-text text-dark text-center mt-5">
+                        To verify your phone number, we ask that you place a call from your phone.
+                        <p> The phone call will not be answered.
+                        <p> The phone call will be rejected.<br> In many cases, you will hear only a short ring,
+                            sometimes nothing.
+                        <p> You will <b>not be charged</b> for the phone call,<br> depending on your carrier<br>(most
+                            carriers do not charge for unanswered calls)
+                        <p> Please call <b>from</b> the phone number you registered with.<br>
+                        <p> Please confirm your phone number. <b>You can change your number</b> in this
+                            step.<br>
+                        <div class="card m-7">
+                          <form class="call-submit" method="post"> {% csrf_token %}
+                            <div class="row">
+                              <div class="col-md-4 col-sm-12">
+                                <p clas="fw-normal text-dark">My phone number is</p>
+                              </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-floating">
+                                            {{change_phone_form.country_code}}
+                                            <label class="text-muted" for="id_first_name"> <span
+                                                    class="fw-normal text-dark">
+                                                    Country Code</span> <span class="text-danger text-bold">*</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-floating">
+                                            {{change_phone_form.phone}}
+                                            <label class="text-muted" for="id_last_name"><span
+                                                    class="fw-normal text-dark">Phone Number</span>
+                                                <span class="text-danger text-bold">*</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                                    <h4 class="text-dark">Please call <button class="btn btn-light"><a class="text-dark"
+                                href="tel:+447488884774">+447488884774</a></button> to get verified.</h4>
+
+                                <button class="btn btn-color text-white mt-2" type="submit"
+                                    name="verify-success">I Called </button>
+                            </form>
+                        </div>
+                        <br><br>
+                        <div class="card m-7">
+                            <form class="call-submit" method="post"> {% csrf_token %}
+                                <button class="btn btn-color text-white w-100" type="submit" name="verify-unsuccess">I
+                                    was
+                                    unable</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    var elements = document.getElementsByName('country_code');
+
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.add('form-select');
+        elements[i].classList.add('round-left');
+    }
+    var elements = document.getElementsByName('phone');
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.add('form-control');
+        elements[i].classList.add('round-right');
+    }
+    var elements = document.getElementsByName('otpcode');
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.add('form-control');
+    }
+
+    var selectElement = document.getElementById('id_country_code')
+    const code = "{{ request.user.country_code }}"
+    console.log(code)
+    for (let i = 0; i < selectElement.options.length; i++) {
+        if (selectElement.options[i].value === code) {
+            selectElement.options[i].selected = true;
+            break;
+        }
+    }
+
+</script>
+{% endblock %}

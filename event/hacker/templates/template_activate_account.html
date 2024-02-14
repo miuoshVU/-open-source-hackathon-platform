@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Email Template</title>
+  </head>
+
+  <body style="margin: 0; padding: 0; background-color: #f9f9f9">
+    <table
+      border="0"
+      cellpadding="0"
+      cellspacing="0"
+      width="100%"
+      style="table-layout: fixed"
+    >
+      <tr>
+        <td
+          align="center"
+          valign="top"
+          style="padding-top: 30px; padding-bottom: 20px"
+        >
+          <img
+            src="https://challenge.parkyeri.com/static/logo.png"
+            width="100%"
+            style="max-width: 600px; height: auto; display: block"
+          />
+        </td>
+      </tr>
+    </table>
+    <table
+      border="0"
+      cellpadding="0"
+      cellspacing="0"
+      width="100%"
+      style="table-layout: fixed"
+    >
+      <tr>
+        <td align="center" valign="top" style="padding-bottom: 30px">
+          <table>
+            <tr>
+              <td>
+                <div
+                  style="
+                    background-color: #fff;
+                    padding: 20px;
+                    border: 1px solid rgba(0, 0, 0, 0.2);
+                    border-radius: 10px;
+                    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+                  "
+                >
+                  <h1>Dear {{user.first_name}},</h1>
+                  <p>
+                    We kindly request your confirmation by clicking the
+                    following link to verify your email:
+                  </p>
+                  <table>
+                    <tr>
+                      <td align="center" valign="top">
+                        <a
+                          href="https://{{domain}}{% url 'activate' uidb64=uid token=token %}"
+                          style="
+                            display: inline-block;
+                            padding: 10px 20px;
+                            background-color: rgb(236, 18, 18);
+                            color: #ffffff;
+                            text-decoration: none;
+                            border-radius: 5px;
+                            margin: 1rem 0;
+                          "
+                          >Confirm your email</a
+                        >
+                      </td>
+                    </tr>
+                  </table>
+                  <p>
+                    Should you require any assistance, please do not hesitate to
+                    reach out to us.
+                  </p>
+                  <p>Best regards,</p>
+                  <p style="margin-bottom: 0">The Christmas Challenge Team</p>
+                  <a
+                    href="mailto:challenge@parkyeri.com"
+                    style="
+                      text-decoration: none;
+                      color: rgb(236, 18, 18);
+                      display: block;
+                      margin-top: 10px;
+                      margin-bottom: 5px;
+                    "
+                    >challenge@parkyeri.com</a
+                  >
+                  <div class="d-flex justify-content-center py-2">
+                    <img
+                      src="https://challenge.parkyeri.com/static/images/parkyeri-adam.png"
+                      class="img-fluid p-1 pe-0"
+                      style="height: 30px"
+                    />
+                    <img
+                      src="https://challenge.parkyeri.com/static/images/parkyeri-yazi.png"
+                      class="img-fluid p-1"
+                      style="height: 30px"
+                    />
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

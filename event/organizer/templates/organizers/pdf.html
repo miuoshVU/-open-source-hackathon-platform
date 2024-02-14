@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Application Form</title>
+  </head>
+
+  <body>
+    <div style="text-align: center">
+      <h1 style="margin: 0; padding: 0">Application Form</h1>
+    </div>
+    <br /><br />
+    <p><strong>Name:</strong> {{ first_name }} {{ last_name }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Phone Number:</strong> {{ phone }}</p>
+    <p><strong>Location:</strong> {{ location }}</p>
+    <p><strong>Link/URL to project:</strong> {{ project_url }}</p>
+    <p>
+      <strong>Which issue/enhancement/bug did you work on?:</strong> {{
+      issue_desc }}
+    </p>
+    <p><strong>Details about your contribution:</strong> {{ project_info }}</p>
+    <p><strong>Potential Impact of Your Work:</strong> {{ project_impact }}</p>
+    <p>
+      <strong>Link to your Contribution (URL):</strong> {{ contribution_url }}
+    </p>
+    {% if feedback != "" %}
+    <p><strong>Any feedback about the hackathon?:</strong> {{ feedback }}</p>
+    {% endif %} {% if expertise != "" %}
+    <p>
+      <strong>What areas do you have expertise in?:</strong> {{ expertise }}
+    </p>
+    {% endif %} {% if interest != "" %}
+    <p>
+      <strong>What areas/topics are you interesed in?:</strong> {{ interest }}
+    </p>
+    {% endif %} {% if team != "" %}
+    <p><strong>Are you part of a team? Who?:</strong> {{ team }}</p>
+    {% endif %} {% if profile_url != "" %}
+    <p>
+      <strong>Link to your profile (eg: linkedin, github URL):</strong> {{
+      profile_url }}
+    </p>
+    {% endif %} {% if hackathon != "" %}
+    <p>
+      <strong>Where did you hear about this hackathon?:</strong> {{ hackathon }}
+    </p>
+    {% endif %}
+  </body>
+</html>
